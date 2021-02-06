@@ -1,0 +1,63 @@
+*{
+    background-color: khaki;
+}
+
+body {
+    font-family: 'arial', sans-serif;
+}
+
+body h1 {
+    font-size: 38px;
+}
+
+body h2 {
+    font-size: 32px;
+}
+
+.ingredients-list {
+    list-style: square inside;
+}
+
+.directions-list {
+    list-style: circle inside;
+}
+
+header > img {
+    width: 100px;
+}
+
+ul li a {
+    color: inherit;
+    text-decoration: none;
+}
+
+#reviews {
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif
+}
+
+input[type="radio"] {
+    cursor: pointer;
+    outline: none;
+}
+
+input[type="radio"], select, input[type="select"]{
+    cursor: pointer;
+    outline:none;
+
+}
+
+input:last-child {
+    background-color: gold;
+}
+
+ol li:nth-child(2n){
+    background-color: lightgrey;
+}
+
+h2 + .user_review {
+    border-top:1px solid black;
+
+}
+
+
+
