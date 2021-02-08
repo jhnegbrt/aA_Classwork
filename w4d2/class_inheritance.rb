@@ -1,3 +1,5 @@
+require "byebug"
+
 class Employee
   
   attr_reader :salary, :name, :title, :boss
@@ -13,6 +15,15 @@ class Employee
     bonus = @salary * multiplier
   end
 
+  def add_subs
+    self.boss.subs << self
+    if self.instance_of?(Manager)
+      self.subs.each do |ele|
+        self.boss.subs << ele
+      end
+    end
+  end
+
 end
 
 class Manager < Employee
@@ -20,37 +31,33 @@ class Manager < Employee
   attr_reader :subs
 
   def initialize(name, title, salary, boss)
+
     super
     @subs = []
   end
 
-  def add_subs
-    self.boss.subs << self
-    self.subs.each do |ele|
-      self.boss.subs << ele
-    end
-  end
 
   def bonus(multiplier)
     sum = 0
     self.subs.each do |sub|
-      if sub.instance_of?(Manager)
-        sub.bonus * multiplier
-      else
-        sum += sub.salary
-      end
+      sum += sub.salary
     end
     bonus = multiplier * sum
   end
 
 end
 
-p ned = Manager.new("Ned", "Founder", 1000000, nil)
-p darren = Manager.new("Darren", "TA Manager", 78000, ned)
-p shawna = Employee.new("Shawna", "TA", 12000, darren)
-p david = Employee.new("David", "TA", 10000, darren)
+ned = Manager.new("Ned", "Founder", 1000000, nil)
+darren = Manager.new("Darren", "TA Manager", 78000, ned)
+shawna = Employee.new("Shawna", "TA", 12000, darren)
+david = Employee.new("David", "TA", 10000, darren)
+
+david.add_subs
+shawna.add_subs
+darren.add_subs
 
 
-# ned.bonus(5) # => 500_000
-# darren.bonus(4) # => 88_000
-# david.bonus(3) # => 30_000
+
+p ned.bonus(5) # => 500_000
+p darren.bonus(4) # => 88_000
+p david.bonus(3) # => 30_000
