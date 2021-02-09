@@ -1,3 +1,5 @@
+require "colorize"
+
 require "byebug"
 require_relative './pieces/rook'
 require_relative './pieces/knight'
@@ -85,15 +87,25 @@ class Board
 
   end
 
-  # def print_board
-  #   @rows.each do 
-
-  # end
+  def print_board
+    grid = @rows.map do |row|
+      row.map do |pos|
+        if pos.is_a?(NullPiece)
+          :_ 
+        elsif pos.color == :W
+          "X".colorize("orange")
+        else
+          "Y"
+        end
+      end
+    end
+    grid.each do |row|
+      puts row.join(" ")
+    end
+  end
 
 end
 
 b = Board.new
-p b
-b.move_piece(:W, [2,2], [1,1])
-
-p b
+# p b
+b.print_board
