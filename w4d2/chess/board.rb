@@ -16,13 +16,13 @@ class Board
     self = Knight.new(:W, self, [0, 6])
     self = Rook.new(  :W, self, [0, 7])
   
-    @rows[1].map! { |pos| Pawn.new }
+    @rows[1].each_with_index { |pos, i| Pawn.new(:W, self, [1, i]) }
 
     @rows[2..5].each do |row|
       row.map! {|pos| NullPiece.instance }
     end
 
-    @rows[6].map! { |pos| Pawn.new }
+    @rows[6].each_with_index { |pos, i| Pawn.new(:B, self, [6, i]) }
   
     self = Rook.new(  :B, self, [7, 0])
     self = Knight.new(:B, self, [7, 1])
@@ -47,6 +47,25 @@ class Board
   end
 
   def move_piece(color, start_pos, end_pos)
+    begin
+      puts "enter two coordinates (e.g. 0 7)"
+      start_input = gets.chomp.to_i
+
+      row, col = [start_input]
+  
+      if self[row, col] != color
+        raise 
+      end
+      puts "enter two coordinates (e.g. 0 7)"
+      end_input = gets.chomp.to_i
+
+      row, col = [end_input]
+
+    rescue
+      puts 'invalid position entry'
+      retry
+    end
+
     
   end
 
