@@ -64,8 +64,11 @@ class Board
     @rows[row][col] = val
   end
 
-  def valid_pos?(position)
+  def valid_pos?(pos, same_team)
 
+    return false if !pos[0].between?(0, 7) || !pos[1].between?(0, 7)
+    return false if self[pos].color == same_team
+    true
   end
 
   def move_piece(color, start_pos, end_pos)
@@ -117,3 +120,6 @@ puts "colorize works ♚".colorize(:green)
 b = Board.new
 # p b
 b.print_board
+b.move_piece(:W, [0,0],[4,4])
+
+p b[[4,4]].moves
