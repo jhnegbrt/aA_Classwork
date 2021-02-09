@@ -1,3 +1,4 @@
+require "byebug"
 require_relative './pieces/rook'
 require_relative './pieces/knight'
 require_relative './pieces/bishop'
@@ -61,26 +62,38 @@ class Board
 
   def move_piece(color, start_pos, end_pos)
     begin
+      
       puts "enter starting coordinates (e.g. 0 7)"
       start_input = gets.chomp.split.map(&:to_i)
-      row, col = start_input
-      unless self[row, col].color == color
+      unless self[start_input].color == color
         raise 
       end
       
       puts "enter ending coordinates (e.g. 0 7)"
       end_input = gets.chomp.split.map(&:to_i)
-      row1, col1 = [end_input]
-      unless row1.between?(0..7) && col1.between?(0..7)
+      if !end_input[0].between?(0, 7) || !end_input[1].between?(0, 7)
         raise 
       end
+
+      self[end_input] = self[start_input]
+      self[start_input] = NullPiece.instance
 
     rescue
       puts 'invalid position entry'
       retry
     end
-    self[row1, col1] = self[row, col]
-    self[row, col] = NullPiece.instance
+
   end
 
+  # def print_board
+  #   @rows.each do 
+
+  # end
+
 end
+
+b = Board.new
+p b
+b.move_piece(:W, [2,2], [1,1])
+
+p b
