@@ -62,14 +62,14 @@ class Board
   def move_piece(color, start_pos, end_pos)
     begin
       puts "enter starting coordinates (e.g. 0 7)"
-      start_input = gets.chomp.to_i
-      row, col = [start_input]
+      start_input = gets.chomp.split.map(&:to_i)
+      row, col = start_input
       unless self[row, col].color == color
         raise 
       end
       
       puts "enter ending coordinates (e.g. 0 7)"
-      end_input = gets.chomp.to_i
+      end_input = gets.chomp.split.map(&:to_i)
       row1, col1 = [end_input]
       unless row1.between?(0..7) && col1.between?(0..7)
         raise 
