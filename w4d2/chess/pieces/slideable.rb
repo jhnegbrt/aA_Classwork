@@ -15,7 +15,7 @@ module Slideable
     [ 1,-1],
   ]
   attr_reader :DIAGONAL_DIRS, :HORIZONTAL_DIRS
-  def moves   
+  def moves
     moves = []
     self.move_dirs.each do |dir|
       dx, dy = dir
@@ -30,18 +30,18 @@ module Slideable
   end
  
   def grow_unblocked_moves_in_dir(dx, dy)
-    # debugger
+
     position = self.pos.dup
-    moves = []
+    move_dir = []
     i = [dx, dy]
     position = [(i[0] + position[0]), (i[1] + position[1])]
     
     while @board.valid_pos?(position, self.color)
-      moves << position
+      move_dir << position
+      break if !@board[position].is_a?(NullPiece) && @board[position].color != self.color
       position = [(i[0] + position[0]), (i[1] + position[1])]
-      break if !@board[position].is_a?(NullPiece) && @board[position].color != self.color 
     end
-    moves
+    move_dir
   end
 
 
