@@ -19,16 +19,22 @@ class Manager < Employee
 
   attr_reader :subs
 
-  def initialize(name, title, salary, boss, subordinates)
-    super(name, title, salary, boss)
+  def initialize(name, title, salary, boss)
+    super
     @subs = []
-    subordinates.each {|sub| @sub << sub}
+  end
+
+  def add_subs
+    self.boss.subs << self
+    self.subs.each do |ele|
+      self.boss.subs << ele
+    end
   end
 
   def bonus(multiplier)
     sum = 0
     self.subs.each do |sub|
-      if sub.instance_of(Manager)
+      if sub.instance_of?(Manager)
         sub.bonus * multiplier
       else
         sum += sub.salary
@@ -39,14 +45,12 @@ class Manager < Employee
 
 end
 
-david = Employee.new("David", "TA", 10000, darren)
-shawna = Employee.new("Shawna", "TA", 12000, darren)
-
-darren = Manager.new("Darren", "TA Manager", 78000, ned, [david, shawna])
-
-ned = Manager.new("Ned", "Founder", 1000000, nil, [darren])
+p ned = Manager.new("Ned", "Founder", 1000000, nil)
+p darren = Manager.new("Darren", "TA Manager", 78000, ned)
+p shawna = Employee.new("Shawna", "TA", 12000, darren)
+p david = Employee.new("David", "TA", 10000, darren)
 
 
-ned.bonus(5) # => 500_000
-darren.bonus(4) # => 88_000
-david.bonus(3) # => 30_000
+# ned.bonus(5) # => 500_000
+# darren.bonus(4) # => 88_000
+# david.bonus(3) # => 30_000
