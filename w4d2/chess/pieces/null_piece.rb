@@ -3,5 +3,7 @@ require "Singleton"
 class NullPiece < Piece
   include Singleton
 
-  def initialize; end
+  def initialize
+  
+  end
 end
