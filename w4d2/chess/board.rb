@@ -11,6 +11,8 @@ require_relative './pieces/null_piece'
 
 class Board
 
+  
+
   def initialize
     @rows = Array.new(8) {Array.new(8)}
     populate_board
@@ -62,6 +64,10 @@ class Board
     @rows[row][col] = val
   end
 
+  def valid_pos?(position)
+
+  end
+
   def move_piece(color, start_pos, end_pos)
     begin
       
@@ -87,15 +93,17 @@ class Board
 
   end
 
+  
+
   def print_board
     grid = @rows.map do |row|
       row.map do |pos|
         if pos.is_a?(NullPiece)
           :_ 
         elsif pos.color == :W
-          "X".colorize("orange")
+          pos.symbol.to_s.colorize(:blue)
         else
-          "Y"
+          pos.symbol.to_s.colorize(:yellow)
         end
       end
     end
@@ -105,7 +113,7 @@ class Board
   end
 
 end
-
+puts "colorize works ♚".colorize(:green)
 b = Board.new
 # p b
 b.print_board
