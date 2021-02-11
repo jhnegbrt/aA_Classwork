@@ -88,7 +88,7 @@ class Board
 
       self[end_input] = self[start_input]
       self[start_input] = NullPiece.instance
-
+      self[end_input].pos = end_input
     rescue
       puts 'invalid position entry'
       retry
