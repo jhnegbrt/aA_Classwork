@@ -99,14 +99,14 @@ class ResizingIntSet
       @store[m] << num
       @count += 1
     end
-
-
   end
 
   def remove(num)
   end
 
   def include?(num)
+    m = num % @store.length
+    @store[m].include?(num)
   end
 
   private
@@ -120,8 +120,14 @@ class ResizingIntSet
   end
 
   def resize!
-
-    
+    current_store = @store
+    @store = Array.new(num_buckets*2) { Array.new }
+    current_store.each do |subarr|
+      subarr.each do |ele|
+        insert(ele)
+      end
+    end
 
   end
+
 end
