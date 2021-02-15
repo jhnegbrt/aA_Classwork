@@ -48,7 +48,7 @@ class MaxIntSet
 end
 
 class IntSet
-  attr_reader :store
+  attr_accessor :store
   def initialize(num_buckets = 20)
     @store = Array.new(num_buckets) { Array.new }
   end
@@ -61,9 +61,14 @@ class IntSet
   end
 
   def remove(num)
+    m = num % @store.length
+    @store[m].delete(m)
   end
 
   def include?(num)
+    m = num % @store.length
+    @store[m].include?(num)
+
   end
 
   private
@@ -86,6 +91,16 @@ class ResizingIntSet
   end
 
   def insert(num)
+
+    if @count > num_buckets
+      resize!
+    else
+      m = num % num_buckets
+      @store[m] << num
+      @count += 1
+    end
+
+
   end
 
   def remove(num)
@@ -105,5 +120,8 @@ class ResizingIntSet
   end
 
   def resize!
+
+    
+
   end
 end
