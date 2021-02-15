@@ -47,21 +47,17 @@ class MaxIntSet
   end
 end
 
-
-
-
-
-
-
-#[true, false, _, _,]
-
-
 class IntSet
+  attr_reader :store
   def initialize(num_buckets = 20)
     @store = Array.new(num_buckets) { Array.new }
   end
 
   def insert(num)
+    m = num % @store.length
+    # p m
+    @store[m] << num
+    # p @store
   end
 
   def remove(num)
