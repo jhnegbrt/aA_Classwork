@@ -32,14 +32,6 @@ def harrison_ford
 
   Movie.select(:id, :title).joins(:actors).where(actors: {name: "Harrison Ford"}).where.not("ord = 1")
 
-  # Actor.joins(:castings)
-
-  # Movie.select(:id, :title).joins(:castings).where("ord > 1")
-
-  # Actor.joins()
-
-  # Actor.find_by(name: "Harrison Ford")
-
 end
 
 def biggest_cast
@@ -56,6 +48,15 @@ def biggest_cast
   #
   # Find the id and title of the 3 movies with the
   # largest casts (i.e most actors)
+
+  ## Find id and title of movie
+  ## Limit of 3
+  ## Count of cast COUNT(actor_id)
+  ## group_by (movie_id) to get a count of actors in each 
+  ## order decending (DESC)
+  ## Movie -> Casting join castings
+
+  Movie.select(:id, :title).joins(:castings).group(:movie_id).order('COUNT(actor_id) DESC').limit(3)
 
 end
 
