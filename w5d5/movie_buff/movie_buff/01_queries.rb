@@ -56,7 +56,7 @@ def biggest_cast
   ## order decending (DESC)
   ## Movie -> Casting join castings
 
-  Movie.select(:id, :title).joins(:castings).group(:movie_id).order('COUNT(actor_id) DESC').limit(3)
+  Movie.select(:id, :title).joins(:castings).group("movies.id").order('COUNT(actor_id) DESC').limit(3)
 
 end
 
