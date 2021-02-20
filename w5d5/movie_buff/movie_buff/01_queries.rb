@@ -73,6 +73,15 @@ def directed_by_one_of(them)
   #
   # Find the id and title of all the movies directed by one of 'them'.
 
+  #find and ID and Title of a movie
+  #use director_id to get ['George Lucas', 'Steven Spielberg']
+  #join Movies on director 
+  #where name in THEM
+  Movie.select(:id, :title).joins(:director).where(actors: {name: them})
+
+
+
+
 end
 
 def movie_names_before_1940
@@ -87,4 +96,12 @@ def movie_names_before_1940
   #
   # Use pluck to find the title of all movies made before 1940.
 
+  #select movie names
+  #use the pluck
+  #select titles from movies where yr < 1941
+
+  Movie.where("yr < 1940").pluck(:title)
+
 end
+
+# Chirp.joins(:likes).group(:id).having('COUNT(*) >= ?', 3).pluck(:body)
