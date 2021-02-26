@@ -1,0 +1,32 @@
+/* PHASE 2: Notifications */
+
+.w3-badge {
+  display: inline;
+  font-size: 14px;
+  margin-left: 5px;
+  padding: 4px 9px;
+  background: black;
+  border-radius: 50%;
+  
+}
+
+
+li:hover .badge {
+  background: #f00;
+}
+
+.header {
+  position: relative;
+}
+
+.header-list > li {
+  position: relative;
+}
+
+.header-notifications {
+  display: none;
+}
+
+li:hover .header-notifications {
+  display: block;
+}
