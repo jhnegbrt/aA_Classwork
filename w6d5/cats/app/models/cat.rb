@@ -1,6 +1,7 @@
 require "date"
 
 class Cat < ApplicationRecord
+  validates(:description, :sex, :name, :color, :birth_date, presence: true)
 
   attr_accessor :birth_date
 
