@@ -1,7 +1,22 @@
 class CatsController < ApplicationController
    def index
-    @cats = Cats.all
+      @cats = Cat.all
+      # render :index
+   end
 
-    #render :index
+   def show
+      
+      @cat = Cat.find_by(id: params[:id])
+
+      # render json: @cat
+
+      render :show
+      
+      # if @cat
+         
+      # else
+      #    redirect_to cats_url
+      # end
+
    end
 end

@@ -3,8 +3,6 @@ require "date"
 class Cat < ApplicationRecord
   validates(:description, :sex, :name, :color, :birth_date, presence: true)
 
-  attr_accessor :birth_date
-
   # new_cat = Cat.find_by(:birth_date)
 
   # new_cat = Cat.new("2010/01/01")
