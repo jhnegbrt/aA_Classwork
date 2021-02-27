@@ -19,4 +19,10 @@ class CatsController < ApplicationController
       # end
 
    end
+
+   def new
+      @new_cat = Cat.new
+
+      render :new
+   end
 end
