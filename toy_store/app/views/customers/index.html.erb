@@ -1,0 +1,12 @@
+<h1>All the Users</h1>
+
+
+
+<%@customers.each do |customer|%>
+
+<h3> Full Name: <%= customer.last_name%>, <%= customer.first_name%> </h3>
+<ul>
+  <li>Age: <%= customer.age%>
+</ul>
+
+<%end%>

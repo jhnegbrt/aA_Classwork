@@ -1,0 +1,8 @@
+<h1>All the Toy Categories</h1>
+
+<% @categories.each do |category| %>
+
+<h3><%=category.category%>s</h3>
+<li><a href=<%=category_url(category.id)%>>See <%=category.category%>s</a></li>
+
+<%end%>
