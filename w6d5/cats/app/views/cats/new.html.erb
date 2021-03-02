@@ -2,4 +2,32 @@
 
 
 
-<form action=""></form>
+<form action=<%= cats_url %> method="POST">
+
+<label>Name:
+  <input type="text" name="cats[name]">
+</label>
+<br>
+
+<label>Birth Date:
+  <input type="date" name="cats[birth_date]">
+</label>
+<br>
+
+<label>Description:
+  <textarea name="cats[description]"></textarea>
+</label>
+<br>
+
+<label>Sex:
+  <input type ="text" name="cats[sex]" value = "M/F">
+</label>
+<br>
+
+<label>Color:
+  <input type="text" name="cats[color]">
+</label>
+<br>
+<input type="submit" value="Create Cat">
+
+</form>
