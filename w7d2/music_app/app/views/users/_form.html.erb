@@ -1,0 +1,23 @@
+<%if type == "new"%>
+<% url_var = users_url %>
+<% button = "Submit"%>
+
+<%end%>
+
+
+<form action="<%= url_var %>" method="POST">
+
+  <input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
+
+  <label>Email: 
+    <input type="text" name="user[email]" value="<%=@user.email%>">
+  </label>
+
+  <label>Password: 
+    <input type="password" name="user[password]" value="">
+  </label>
+
+  <input type="<%= button %>">
+  
+
+</form>
