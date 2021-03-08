@@ -10,6 +10,19 @@
   </head>
 
   <body>
+
+    <header>
+      <div class="sign-auth">
+        <%if logged_in?%> 
+          <%= form_with url: user_url(current_user), method: :delete do |form| %>
+            <%= form.submit("Log Out") %>
+          <% end %>
+        <%else%>
+          <%= link_to 'Log In', new_session_url %>
+          <%= link_to 'Sign Up', new_user_url %>
+        <%end%>
+      </div>
+    </header>
     <%= yield %>
   </body>
 </html>

@@ -34,7 +34,7 @@ class UsersController < ApplicationController
 
   def destroy
     @user = self.current_user
-    @user.delete
+    @user.destroy
     redirect_to new_user_url
   end
 
