@@ -6,7 +6,9 @@
 
 <ul>
   <% @sub.posts.each do |post|%>
-    <li><%= render "../posts/post_template", post: post %></li>
+    <li>
+      <%= link_to post.title, post_url(post) %>
+    </li>
   <%end%>
 
 </ul>

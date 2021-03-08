@@ -1,6 +1,6 @@
 class PostSub < ApplicationRecord
 
-  validates :sub_id, :post_id, presence: true
+  validates :sub, :post, presence: true
   validates :sub_id, uniqueness: {scope: :post_id}
 
   belongs_to :sub

@@ -6,8 +6,17 @@ class PostsController < ApplicationController
   end
 
   def create
- 
-    @post = Post.new(title: post_params[:title], url: post_params[:url], content: post_params[:content], sub_id: post_params[:sub_id], author_id: current_user.id)
+    
+    @post = Post.new(
+      title: post_params[:title],
+      url: post_params[:url],
+      content: post_params[:content],
+      author_id: current_user.id
+    )
+
+    @post.sub_ids = post_params[:sub_ids];
+
+debugger
     if @post.save
       redirect_to post_url(@post)
     else
@@ -35,7 +44,7 @@ class PostsController < ApplicationController
   def destroy
     @post = Post.find_by(id: params[:id])
     @post.destroy
-    redirect_to sub_posts_url(post_params[:sub_id])
+    redirect_to user_url(self.current_user)
   end
 
   def index
@@ -49,7 +58,7 @@ class PostsController < ApplicationController
   private
   
   def post_params
-    params.require(:post).permit(:title, :url, :content, :sub_id)
+    params.require(:post).permit(:title, :url, :content, sub_ids: [])
   end
 
 end
