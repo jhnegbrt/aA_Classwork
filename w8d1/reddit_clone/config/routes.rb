@@ -5,7 +5,11 @@ Rails.application.routes.draw do
     resources :subs, only: [:create]
   end
 
-  resources :subs, except: [:create]
+  resources :subs, except: [:create] do 
+    resources :posts, only: [:index]
+  end
+
+  resources :posts, except: [:index]
 
   resource :session, only: [:new, :create, :destroy]
 

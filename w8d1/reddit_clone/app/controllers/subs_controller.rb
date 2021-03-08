@@ -18,6 +18,7 @@
 
 class SubsController < ApplicationController
   before_action :ensure_logged_in, only: [:new, :edit, :update, :create, :destroy]
+  before_action :ensure_same_user, only: [:edit, :update, :destroy]
 
   def new
     @sub = Sub.new
@@ -58,10 +59,22 @@ class SubsController < ApplicationController
   end
 
   def destroy
+    @sub = Sub.find_by(id: params[:id])
 
+    @sub.destroy
+
+    redirect_to subs_url
   end
 
   private
+
+  def ensure_same_user
+    if current_user.id != params[:id]
+      redirect_to sub_url(params[:id])
+    end
+  end
+
+
   def sub_params
     params.require(:sub).permit(:title, :description, :moderator_id)
   end
