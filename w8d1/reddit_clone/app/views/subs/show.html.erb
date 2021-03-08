@@ -1,0 +1,21 @@
+<h1><%=@sub.title%></h1>
+
+<p><%=@sub.description%></p>
+
+<ul>
+  <% @sub.posts.each do |post|%>
+  <li><%= render "../posts/post_template", post: post %></li>
+  <%end%>
+
+</ul>
+
+<%= link_to 'Edit Sub', sub_url(@sub) %>
+
+
+<form action= "<%=sub_url(@sub)%>" method="POST">
+  <input type="hidden" name="_method" value="DELETE">
+
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+
+  <input type="submit" value="Delete Sub">
+</form>
