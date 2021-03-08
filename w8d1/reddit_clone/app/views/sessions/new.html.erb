@@ -1,9 +1,5 @@
 <h1>Log In</h1>
 
-<div>
-  <h4><%= flash[:errors] %></h4>
-</div>
-
 <form action="<%= session_url %>" method="post">
   <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
 
@@ -17,7 +13,7 @@
     <input type="password" name="user[password]">
   </label>
 
-  <br/>
+  <br>
 
   <input type="submit" value="Log In">
 </form>

@@ -1,0 +1,23 @@
+<h1>New Sub</h1>
+
+<div>
+  <h4><%= flash[:errors] %></h4>
+</div>
+
+<form action="<%= user_subs_url(current_user.id) %>" method="post">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+
+  <label>title
+    <input type="text" name="sub[title]">
+  </label>
+
+  <label>description
+    <input type="text" name="sub[description]">
+  </label>
+
+  <label>moderator
+    
+  </label>
+
+  <input type="submit" value="New Sub">
+</form>

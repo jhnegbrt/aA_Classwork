@@ -25,7 +25,7 @@ class SubsController < ApplicationController
   end
 
   def create
-    @sub = Sub.new(**sub_params, moderator_id: params[:id])
+    @sub = Sub.new(title: sub_params[:title], description: sub_params[:description], moderator_id: params[:user_id])
 
     if @sub.save
       redirect_to sub_url(@sub)
