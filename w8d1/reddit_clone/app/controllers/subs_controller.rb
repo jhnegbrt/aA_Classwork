@@ -69,11 +69,13 @@ class SubsController < ApplicationController
   private
 
   def ensure_same_user
-    if current_user.id != params[:id]
+    @sub = Sub.find_by(id: params[:id])
+
+    if current_user.id != @sub.moderator_id
+      flash[:errors] = ["Permision Denied!"]
       redirect_to sub_url(params[:id])
     end
   end
-
 
   def sub_params
     params.require(:sub).permit(:title, :description, :moderator_id)

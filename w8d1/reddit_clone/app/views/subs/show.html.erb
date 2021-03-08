@@ -1,21 +1,26 @@
 <h1><%=@sub.title%></h1>
 
+<div><%= flash[:errors] %></div>
+
 <p><%=@sub.description%></p>
 
 <ul>
   <% @sub.posts.each do |post|%>
-  <li><%= render "../posts/post_template", post: post %></li>
+    <li><%= render "../posts/post_template", post: post %></li>
   <%end%>
 
 </ul>
 
-<%= link_to 'Edit Sub', sub_url(@sub) %>
 
+<% if current_user.id == @sub.moderator_id %>
+  <%= link_to 'Edit Sub', edit_sub_url %>
 
-<form action= "<%=sub_url(@sub)%>" method="POST">
-  <input type="hidden" name="_method" value="DELETE">
+  <form action= "<%=sub_url(@sub)%>" method="POST">
+    <input type="hidden" name="_method" value="DELETE">
 
-  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
 
-  <input type="submit" value="Delete Sub">
-</form>
+    <input type="submit" value="Delete Sub">
+  </form>
+
+<% end %>
