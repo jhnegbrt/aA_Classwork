@@ -1,7 +1,7 @@
 <p>comment.content</p>
 
 <ul>
-  <%comment.child_comments.each do |child|%>
+  <%hash[@comment.id].each do |child|%>
 
     <li><%=render "comment", comment: child%></li>
 

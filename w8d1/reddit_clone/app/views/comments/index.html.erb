@@ -1,1 +1,12 @@
-<% render "comments", hash: @comment_hash %>
+
+
+<ul>
+
+ <% @comment_hash[nil].each do |comment|%> 
+  <li> <%= render "comments", comment: comment, hash: @comment_hash %></li>
+ <%end%>
+
+</ul>
+
+
+@comment_hash[comment].each do |ele|
