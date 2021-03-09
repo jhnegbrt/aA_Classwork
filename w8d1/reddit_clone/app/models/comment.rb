@@ -20,6 +20,9 @@ class Comment < ApplicationRecord
   belongs_to :parent_comment,
   class_name: "Comment"
 
+  belongs_to :ancestor_comment,
+  class_name: "Comment"
+
   belongs_to :author
 
   belongs_to :post

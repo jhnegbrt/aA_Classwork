@@ -16,7 +16,6 @@ class PostsController < ApplicationController
 
     @post.sub_ids = post_params[:sub_ids];
 
-debugger
     if @post.save
       redirect_to post_url(@post)
     else

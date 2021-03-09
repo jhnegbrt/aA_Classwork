@@ -24,3 +24,14 @@
   </form>
 
 <% end %>
+
+<ul>
+
+  <% @post.comments.where(parent_comment_id: nil).each do |comment| %>
+    <p><%= comment.content %></p>
+    <%= link_to "View Thread", comment_url(comment) %>
+  <% end %>
+</ul>
+
+<%= link_to 'Comment', comments_url %>
+
