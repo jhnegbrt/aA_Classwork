@@ -12,27 +12,29 @@ class CommentsController < ApplicationController
       if @comment.parent_comment_id == nil
         redirect_to post_url(@comment.post_id) 
       else
-        redirect_to :show
+        redirect_to comment_url(@comment.ancestor_id)
       end
     else
-      flash[:errors]
+      flash.now[:errors] = @comment.errors.full_messages
+      render :new
     end
   end
-# for every comment: there is a form for creating nested comments
-# for every comment: the show page or partial page will include the comment itself, 
-#   and also its child comments
-# redirect to the post
-# - comment 1 button -> reply to comment 1 -> new -> pass comment 1's id
-#   - comment 2
-#     - comment 3
 
-  def show
-    @comment = Comment.find_by(id: params[:id])
-
-    while @comment.parent
-      @comment = @comment.parent
+  def index
+    @post = Post.find_by(id: params[:post_id])
+    if @post
+      @comment_hash = @post.comments_by_parent_id
+      render :index
+    else
+      
     end
+
   end
+
+  # def show
+  #   @comment = Comment.find_by(id: params[:id])
+  #   render :show
+  # end
 
   private
   def comment_params
