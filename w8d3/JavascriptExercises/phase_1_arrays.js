@@ -26,3 +26,16 @@ Array.prototype.two_sum = function () {
   return array;
 }
 
+Array.prototype.transpose = function () {
+  let array = []
+  for(let i = 0; i < this.length; i++){
+    let second_array = []
+    for(let j = 0; j < this.length; j++){
+      let subarr = this[j][i]
+      second_array.push(subarr)
+    }
+    array.push(second_array)
+  }
+  return array
+}
+
