@@ -49,6 +49,15 @@ Board.prototype.isValidPos = function (pos) {
  * throwing an Error if the position is invalid.
  */
 Board.prototype.getPiece = function (pos) {
+
+  if (this.isValidPos(pos) === false){
+    throw new Error('Not valid pos!');
+  } else if (this.grid[pos[0]][pos[1]] === undefined){
+    return undefined;
+  } else {
+    let position = this.grid[pos[0]][pos[1]]
+    return position;
+  }
 };
 
 /**

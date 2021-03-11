@@ -30,7 +30,6 @@ Piece.prototype.flip = function () {
     // } else {
     //     this.color = 'white';
     // }
-
 };
 
 /**
