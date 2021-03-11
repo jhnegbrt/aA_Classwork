@@ -4,12 +4,21 @@ if (typeof window === 'undefined'){
 }
 // DON'T TOUCH THIS CODE
 
+
 /**
  * Returns a 2D array (8 by 8) with two black pieces at [3, 4] and [4, 3]
  * and two white pieces at [3, 3] and [4, 4]
  */
 function _makeGrid () {
+  
+  a = Array(8).fill(0).map(x => Array(8).fill(undefined))
+  a[3][4] = new Piece("black");
+  a[4][3] = new Piece("black");
+  a[3][3] = new Piece("white");
+  a[4][4] = new Piece("white");
+  return a;
 }
+
 
 /**
  * Constructs a Board with a starting grid set up.
@@ -28,6 +37,11 @@ Board.DIRS = [
  * Checks if a given position is on the Board.
  */
 Board.prototype.isValidPos = function (pos) {
+  if (pos[0] > 7 || pos[0] < 0 || pos[1] > 7 || pos[1] < 0){
+    return false;
+  } else {
+    return true;
+  }
 };
 
 /**
