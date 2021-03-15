@@ -110,9 +110,7 @@ Board.prototype._positionsToFlip = function(pos, color, dir, piecesToFlip = []){
 
     if (!this.isValidPos(pos)){
       return [];
-    } else if (this.getPiece(pos) === undefined){
-      return [];
-    } 
+    }
   
 
     let newPos = [pos[0] + dir[0], pos[1] + dir[1]]
