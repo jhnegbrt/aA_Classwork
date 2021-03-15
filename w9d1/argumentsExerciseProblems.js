@@ -1,11 +1,11 @@
-// function sum(){
-//   let result = 0
-//   for (let i = 0; i < arguments.length; i++){
-//     result += arguments[i]
+function sum(){
+  let result = 0
+  for (let i = 0; i < arguments.length; i++){
+    result += arguments[i]
 
-//   }
-//   return result;
-// }
+  }
+  return result;
+}
 
 // console.log(sum(3, 4, 5))
 
@@ -33,27 +33,41 @@ Function.prototype.myBind = function (ctx, ...bindArgs) {
   // }
 
 
-function curriedSum(numArgs){
-  const numbers = []
-  function _curriedSum(num){
-    numbers.push(num)
-    if (numbers.length === numArgs){
-      return numbers.reduce((a, b) => a + b, 0)
+// function curriedSum(numArgs){
+//   const numbers = []
+//   function _curriedSum(num){
+//     numbers.push(num)
+//     if (numbers.length === numArgs){
+//       return numbers.reduce((a, b) => a + b, 0)
+//     } else {
+//       return _curriedSum
+//     }
+//   }
+//   return _curriedSum
+// }
+
+
+// const sum = curriedSum(4);
+
+// console.log(sum)
+// // console.log(sum(5)(30)(20)(1)); // => 56
+
+
+Function.prototype.curry = function(numArgs){
+  let func = this
+  const args = []
+  function _curry(arg) {
+    args.push(arg);
+    if (args.length === numArgs) {
+      
+     return func.apply(null, args)
     } else {
-      return _curriedSum
-    }
+      return _curry
+    } 
   }
-  return _curriedSum
+  return _curry
 }
 
-
-const sum = curriedSum(4);
-
-console.log(sum)
-// console.log(sum(5)(30)(20)(1)); // => 56
-
-
-
-
-
+// sum.curry(numArgs)(1)(2) 
+console.log(sum.curry(2)(3)(4))
 
