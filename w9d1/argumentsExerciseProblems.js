@@ -33,42 +33,42 @@ Function.prototype.myBind = function (ctx, ...bindArgs) {
   // }
 
 
-// function curriedSum(numArgs){
-//   const numbers = []
-//   function _curriedSum(num){
-//     numbers.push(num)
-//     if (numbers.length === numArgs){
-//       return numbers.reduce((a, b) => a + b, 0)
-//     } else {
-//       return _curriedSum
-//     }
-//   }
-//   return _curriedSum
-// }
+function curriedSum(numArgs){
+  const numbers = []
+  return function _curriedSum(num){
+    numbers.push(num)
+    if (numbers.length === numArgs){
+      return numbers.reduce((a, b) => a + b, 0)
+    } else {
+      return _curriedSum
+    }
+  }
+}
 
 
 // const sum = curriedSum(4);
 
 // console.log(sum)
-// // console.log(sum(5)(30)(20)(1)); // => 56
+// console.log(sum(5)(30)(20)(1)); // => 56
 
 
-// Function.prototype.curry = function(numArgs){
-//   let func = this
-//   const args = []
-//   function _curry(arg) {
-//     args.push(arg);
-//     if (args.length === numArgs) {
-      
-//      return func.apply(null, args)
-//     } else {
-//       return _curry
-//     } 
-//   }
-//   return _curry
-// }
+Function.prototype.curry = function(numArgs){
+  let func = this
+  const args = []
+  function _curry(arg) {
+    args.push(arg);
+    if (args.length === numArgs) {
+     return func.apply(null, args)
+    } else {
+      return _curry
+    } 
+  }
+  return _curry
+}
 
-// sum.curry(numArgs)(1)(2) 
+
+
+sum.curry(2)(1)(2) 
 
 
 Function.prototype.curry = function (numArgs) {
@@ -77,7 +77,6 @@ Function.prototype.curry = function (numArgs) {
   function _curry(arg) {
     args.push(arg);
     if (args.length === numArgs) {
-
       return func(...args)
     } else {
       return _curry
