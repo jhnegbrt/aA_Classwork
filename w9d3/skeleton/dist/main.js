@@ -55,7 +55,7 @@ eval("\nconst MoveError = function (msg) { this.msg = msg; };\n\n// MoveError re
   \*************************/
 /***/ ((module) => {
 
-eval("class View {\n  constructor(game, $el) {}\n\n  bindEvents() {}\n\n  makeMove($square) {}\n\n  setupBoard() {}\n}\n\nView.prototype.setupBoard = function(){\n  \n  let ul = $('<ul>')\n  for(let row = 0; row < 3; row ++){\n    for(let col = 0; col < 3; col++){\n      //\n      let li = $('<li>')\n      ul.append(li)\n      //\n    }\n  }\n\n}\n\nmodule.exports = View;\n\n\n//# sourceURL=webpack:///./src/ttt-view.js?");
+eval("class View {\n  constructor(game, $el) {\n    this.game = game;\n    this.$el = $el;\n  \n  \n    \n    \n    this.mark = 'x'\n  \n    let board= this.setupBoard();\n    $el.append(board)\n    this.bindEvents();\n\n\n  }\n\n  bindEvents() {\n    let ul = $('ul')\n    ul.on('click', 'li' , (event) => {\n      this.makeMove(event.target);\n    });\n    \n  }\n\n  makeMove($square) {\n    $square = $($square)\n    $square.addClass('clicked')\n    \n   const pos = $square.data('pos');\n    this.game.playMove(pos);\n    // $square.text(this.mark);\n\n    // if (this.mark === 'x') {\n\n    // }\n\n\n\n  }\n\n  setupBoard() {\n    let ul = $('<ul>')\n    for(let row = 0; row < 3; row ++){\n      for(let col = 0; col < 3; col++){\n        \n        let li = $('<li>')\n        li.data('pos', [row, col])\n        ul.append(li)\n      }\n    }\n    return ul;\n\n  }\n\n\n\n}\n\n\n  \n\nmodule.exports = View;\n\n\n//# sourceURL=webpack:///./src/ttt-view.js?");
 
 /***/ })
 
