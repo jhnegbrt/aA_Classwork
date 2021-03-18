@@ -1,11 +1,7 @@
 class View {
   constructor(game, $el) {
     this.game = game;
-    this.$el = $el;
-  
-  
-    
-    
+    this.$el = $el;    
     this.mark = 'x'
   
     let board= this.setupBoard();
@@ -17,6 +13,7 @@ class View {
 
   bindEvents() {
     let ul = $('ul')
+    let that = this
     ul.on('click', 'li' , (event) => {
       this.makeMove(event.target);
     });
@@ -24,18 +21,26 @@ class View {
   }
 
   makeMove($square) {
+
+
     $square = $($square)
-    $square.addClass('clicked')
-    
-   const pos = $square.data('pos');
-    this.game.playMove(pos);
-    // $square.text(this.mark);
+    const pos = $square.data('pos');
+    if(this.game.board.isEmptyPos(pos)){
+      $square.addClass('clicked')
+      let mark = this.game.currentPlayer
+      $square.text(mark)
+      this.game.playMove(pos);
+    }
 
-    // if (this.mark === 'x') {
+    let winner = this.game.winner();
+    if (winner === 'x' || winner === 'o'){
+      alert(this.game.currentPlayer + ' loses!')
+    }
 
-    // }
-
-
+    // let $caption = $('<p></p>')
+    // $caption.text("Winner")
+    // this.$el.append($caption)
+  
 
   }
 
