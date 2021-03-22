@@ -1,0 +1,122 @@
+
+html {
+  box-sizing: border-box;
+  background: #A9DBB8;
+  text-align: center;
+}
+
+h1 {
+  color: #F0F2EF;
+  font-family: 'helvetica neue';
+  font-size: 20px;
+  font-weight: 200;
+}
+
+.header {
+  display: flex;
+  justify-content: space-around;
+}
+
+.welcome {
+  font-weight: 400;
+  margin-top: 100px;
+}
+
+/* Dog Links */
+.drop-down-dog-nav{
+  position: relative;
+  width: 250px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 5px;
+  border-radius: 5px 5px;
+  font-size: 24px;
+  font-family: sans-serif;
+  background-color: coral;
+
+}
+
+.drop-down-dog-nav:hover, .drop-down-dog-list:hover .drop-down-dog-nav{
+  border-radius: 5px 5px 0 0;
+}
+
+
+.drop-down-dog-list{
+  display: none;
+}
+
+.drop-down-dog-list-show{
+  top: 33px;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  background-color: antiquewhite;
+  width: 250px;
+  padding: 5px;
+  left: 0;
+  border-radius: 0 0 5px 5px;
+
+}
+
+
+a{
+  text-decoration: none;
+  color: black;
+}
+
+a:hover{
+  color: antiquewhite
+}
+
+.drop-down-dog-list-show li{
+  padding: 5px;
+  margin-left: 0;
+  text-align: left;
+  border-bottom: 1px solid black;
+  font-family: sans-serif;
+
+  
+}
+
+.drop-down-dog-list-show li:last-child{
+  border-bottom: none;
+}
+
+.drop-down-dog-list-show li:hover{
+background-color: black;
+  
+}
+.drop-down-dog-list-show li:hover a{
+  color:antiquewhite
+}
+
+
+/*  Phase 4: Slide In & Out Classes */
+
+.align-left {
+  float: left;
+  margin-right: 20px;
+}
+
+.align-right {
+  float: right;
+  margin-left: 20px;
+}
+
+.slide {
+  opacity: 0;
+  transition: all .5s;
+}
+
+.align-left.slide {
+  transform: translateX(-30%) scale(0.95);
+}
+
+.align-right.slide {
+  transform: translateX(30%) scale(0.95);
+}
+
+.slide.active {
+  opacity: 1;
+  transform: translateX(0%) scale(1);
+}
