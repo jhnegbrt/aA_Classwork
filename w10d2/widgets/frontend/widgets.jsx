@@ -1,9 +1,10 @@
-import React from 'react'
-import ReactDOM from 'react-dom'
-import Root from './root'
+import React from 'react';
+import ReactDOM from 'react-dom';
+import Root from './root';
+//import Clock from './clock';
 
 
-document.addEventListener('DOMContendLoaded', ()=>{
-  const root = document.getElementById('root');
-  ReactDOM.render(<Root />, main)
-})
+document.addEventListener('DOMContentLoaded', ()=>{
+  const main = document.getElementById('main');
+  ReactDOM.render(<Root />, main);
+});
