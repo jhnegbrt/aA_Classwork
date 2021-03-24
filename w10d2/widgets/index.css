@@ -21,3 +21,12 @@
   padding: 10px;
 
 }
+
+.tab-titles{
+  display: flex;
+  color: blue
+}
+
+.tab-titles h3 {
+  margin: 3px;
+}

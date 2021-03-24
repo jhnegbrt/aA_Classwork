@@ -1,4 +1,6 @@
 import React from 'react'
+import Header from './header'
+import Window from './window'
 
 class Tabs extends React.Component{
 
@@ -8,24 +10,40 @@ class Tabs extends React.Component{
       index: 0
     };
 
-    this.handleTabClick = this.handleTabClick.bind(this)
+    // this.currentContent = 
+
+    this.changePane = this.changePane.bind(this)
   }
 
-  handleTabClick(){
+
+
+  changePane(num){
+
+    this.setState(
+      { index: num}
+    )
 
   }
+  
 
   render(){
-    <div>
+    
+    const index = this.state.index
+    const panes = this.props.panes
+    return(
+      <div>
       <h1>Our Tabs</h1>
       <div>
-        <header>
-          <Header panes={this.props.panes} index={this.state.index} handleClick={this.handleTabClick}/>
-        </header>
-        <div><article>{this.props.panes[this.state.index].content}</article></div>
+        <div>
+          <Header changePane = {this.changePane} panes={panes} index={index}/>
+        </div>
       </div>
     </div>
+    )
+
 
   }
 
 }
+
+export default Tabs;
