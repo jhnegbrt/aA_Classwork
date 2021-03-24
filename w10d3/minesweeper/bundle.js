@@ -65,7 +65,9 @@ var Board = /*#__PURE__*/function (_React$Component) {
             updateGame: _this.updateGame
           });
         });
-        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, tiles);
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+          key: idx
+        }, tiles);
       }); // debugger
 
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h1", null, "This is the board"), board);

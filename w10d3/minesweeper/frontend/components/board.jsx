@@ -18,7 +18,7 @@ class Board extends React.Component {
               )
             })
             return (
-            <div>
+            <div key={idx}>
                  {tiles}
             </div>
             )
