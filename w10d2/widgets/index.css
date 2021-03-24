@@ -1,0 +1,23 @@
+*{
+  font-family: 'Chango', cursive;
+}
+
+/* #main {
+  position: absolute;
+
+} */
+
+.clock{
+  width: 330px;
+  margin: 10px auto;
+
+
+}
+
+.date-time{
+
+  border: 2px solid salmon;
+  border-radius: 5px;
+  padding: 10px;
+
+}
