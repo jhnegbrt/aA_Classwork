@@ -31,12 +31,10 @@ class Tabs extends React.Component{
     const index = this.state.index
     const panes = this.props.panes
     return(
-      <div>
+    <div>
       <h1>Our Tabs</h1>
       <div>
-        <div>
           <Header changePane = {this.changePane} panes={panes} index={index}/>
-        </div>
       </div>
     </div>
     )

@@ -6,7 +6,6 @@ import Tile from './tile'
 class Board extends React.Component {
     constructor(props) {
         super(props)
-        
     }
       
     
@@ -23,7 +22,6 @@ class Board extends React.Component {
             </div>
             )
         })
-        // debugger
         return (
            <div>
             <h1>This is the board</h1>

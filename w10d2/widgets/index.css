@@ -22,11 +22,28 @@
 
 }
 
+.tabs{
+  border: 1px solid black;
+  width: 300px;
+}
+
 .tab-titles{
   display: flex;
-  color: blue
+  color: blue;
+
 }
 
 .tab-titles h3 {
+  border: 1px solid black;
   margin: 3px;
+}
+
+.pane{
+  color: black;
+  background-color: aquamarine;
+  width: 300px;
+}
+
+.window{
+  border: 1px solid black;
 }

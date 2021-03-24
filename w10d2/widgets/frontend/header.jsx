@@ -13,7 +13,7 @@ class Header extends React.Component{
 
   handleTabClick(e, idx){
 
-    debugger
+
     this.props.changePane(idx)
 
   }
@@ -25,15 +25,13 @@ class Header extends React.Component{
       return <h3 onClick={() => this.handleTabClick(this, idx)} key={idx}>{tab.title}</h3>
     })
 
-    // debugger
-
     return(
 
-      <div>
+      <div className="tabs">
         <ul className="tab-titles">
           {tabTitles}
         </ul>
-        <article>
+        <article className="pane">
           <Window content={this.props.panes[this.props.index].content}/>
         </article>
       </div>

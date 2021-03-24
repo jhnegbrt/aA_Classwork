@@ -8,7 +8,7 @@ class Window extends React.Component{
 
   render(){
     return(
-      <h3>{this.props.content}</h3>
+      <h3 className="window">{this.props.content}</h3>
     )
   }
 

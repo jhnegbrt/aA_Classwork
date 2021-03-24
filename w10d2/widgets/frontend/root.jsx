@@ -22,24 +22,3 @@ const Root = () => {
 }
 
 export default Root;
-
-
-///////////////////////////////////////////
-
-// component = Tab
-// constructor(panes)
-
-// render()
-
-// panes.map(
-//   <h1></h1>
-// )
-
-// <ul>
-//   <h1></h1>
-//   <h1></h1>
-//   <h1></h1>
-// </ul>
-// <article>
-//   "this text" = panes[this.index].content
-// </article>

@@ -68,8 +68,7 @@ var Board = /*#__PURE__*/function (_React$Component) {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
           key: idx
         }, tiles);
-      }); // debugger
-
+      });
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h1", null, "This is the board"), board);
     }
   }]);
@@ -399,6 +398,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var _react_minesweeper__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./react_minesweeper */ "./frontend/components/react_minesweeper.jsx");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -423,21 +423,72 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 
 
 
+
 var Tile = /*#__PURE__*/function (_React$Component) {
   _inherits(Tile, _React$Component);
 
   var _super = _createSuper(Tile);
 
   function Tile(props) {
+    var _this;
+
     _classCallCheck(this, Tile);
 
-    return _super.call(this, props);
+    _this = _super.call(this, props);
+    _this.state = {
+      bombed: false,
+      flagged: false,
+      explored: false,
+      tileDisplay: "~T"
+    };
+    _this.handleClick = _this.handleClick.bind(_assertThisInitialized(_this));
+    return _this;
   }
 
   _createClass(Tile, [{
+    key: "addTotalVote",
+    value: function addTotalVote() {
+      this.setState({
+        totalVotes: this.state.totalVotes + 1
+      });
+    }
+  }, {
+    key: "setTileDisplay",
+    value: function setTileDisplay(alt) {
+      if (alt) {
+        this.setState({
+          tileDisplay: 'F'
+        });
+      } else if (this.props.tile.bombed === true) {
+        this.setState({
+          tileDisplay: 'B'
+        });
+      }
+    } //"&#128163" 
+    // if(this.props.bombed === false && this.props.flagged === false && this.props.explored === false){
+    //   this.setState({ tileDisplay = "T" });
+    // } else if (this.props.bombed === false && this.props.flagged === false && this.props.explored === true){
+    //   this.setState({ tileDisplay = "E" });
+    // } else if (this.props.flagged === true) {
+    //   this.setState({ tileDisplay = "&#128681" });
+    // } else 
+
+  }, {
+    key: "handleClick",
+    value: function handleClick(e) {
+      var alt = e.altKey;
+      this.setTileDisplay(alt); // alert('clicked')
+      //check to see if it is a bomb
+      // if it is a bomb then you lose
+      //else set explored to true and reveal adjacent bombs and return
+      // set tileDisplay to return of adjacent bombs
+    }
+  }, {
     key: "render",
     value: function render() {
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "T");
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+        onClick: this.handleClick
+      }, this.state.tileDisplay);
     }
   }]);
 
