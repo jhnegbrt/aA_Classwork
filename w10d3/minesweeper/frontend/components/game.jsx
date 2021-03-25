@@ -14,6 +14,11 @@ class Game extends React.Component{
 
   updateGame(){
 
+    debugger
+
+    let sring = "string"
+    return sring
+
   }
 
 

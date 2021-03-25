@@ -1,16 +1,20 @@
 .tile {
     background-color: lightgray;
-    border: .5px solid black;
+    border: 2px solid;
     width: 20px;
     height: 20px;
-    margin: 0px;
     padding: 0px;
+    border-style: outset;
 }
 
 .row{
-    
+
     display: flex;
     margin-top: 0px;
     margin-bottom: 0px;
     
+}
+
+.explored{
+    border-style: inset;
 }

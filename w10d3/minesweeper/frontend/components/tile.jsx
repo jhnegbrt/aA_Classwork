@@ -12,22 +12,22 @@ class Tile extends React.Component {
         };
 
       this.handleClick = this.handleClick.bind(this)
+      // this.setTitleDisplay = this.setTitleDisplay.bind(this)
         
     }
 
 
-    addTotalVote() {
-      this.setState({ totalVotes: this.state.totalVotes + 1 });
-    }
+    // setTitleDisplay(alt){
 
-
-    setTileDisplay(alt){
-      if (alt){
-        this.setState({ tileDisplay: 'F'});
-      } else if (this.props.tile.bombed === true) {
-        this.setState({ tileDisplay: 'B'});
-      }
-    }
+      
+      
+    //   if (alt){
+    //     this.props.tile.flagged();
+    //   } else if (this.props.tile.bombed === true) {
+    //     this.props.tile.explore();
+    //   }
+      
+    // }
 
     //"&#128163" 
 
@@ -40,20 +40,23 @@ class Tile extends React.Component {
       // } else 
 
     handleClick(e){
+
+  
  
       const alt = e.altKey
-      this.setTileDisplay(alt);
-      // alert('clicked')
-      //check to see if it is a bomb
-          // if it is a bomb then you lose
-      //else set explored to true and reveal adjacent bombs and return
-      // set tileDisplay to return of adjacent bombs
+      const tile = this.props.tile
+      this.props.updateGame(tile, alt)
+
+
     }
 
-    render() {        
+    render() { 
+ 
+      const flagged = this.props.tile.flagged
+      const explored = this.props.tile.explored
 
       return (
-          <div className="tile" onClick={this.handleClick}>{this.state.tileDisplay}</div>
+          <div className={`tile ${flagged ? "flagged" : ""} ${explored ? "explored" : ""}`} onClick={this.handleClick}>{this.state.tileDisplay}</div>
       )
     }
 }

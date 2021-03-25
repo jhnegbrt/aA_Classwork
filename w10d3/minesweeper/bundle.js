@@ -62,7 +62,7 @@ var Board = /*#__PURE__*/function (_React$Component) {
           return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_tile__WEBPACK_IMPORTED_MODULE_2__.default, {
             key: "".concat(idx, "-").concat(jdx),
             tile: tile,
-            updateGame: _this.updateGame
+            updateGame: _this.props.updateGame
           });
         });
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
@@ -140,7 +140,11 @@ var Game = /*#__PURE__*/function (_React$Component) {
 
   _createClass(Game, [{
     key: "updateGame",
-    value: function updateGame() {}
+    value: function updateGame() {
+      debugger;
+      var sring = "string";
+      return sring;
+    }
   }, {
     key: "render",
     value: function render() {
@@ -442,53 +446,40 @@ var Tile = /*#__PURE__*/function (_React$Component) {
       explored: false,
       tileDisplay: ""
     };
-    _this.handleClick = _this.handleClick.bind(_assertThisInitialized(_this));
+    _this.handleClick = _this.handleClick.bind(_assertThisInitialized(_this)); // this.setTitleDisplay = this.setTitleDisplay.bind(this)
+
     return _this;
-  }
+  } // setTitleDisplay(alt){
+  //   if (alt){
+  //     this.props.tile.flagged();
+  //   } else if (this.props.tile.bombed === true) {
+  //     this.props.tile.explore();
+  //   }
+  // }
+  //"&#128163" 
+  // if(this.props.bombed === false && this.props.flagged === false && this.props.explored === false){
+  //   this.setState({ tileDisplay = "T" });
+  // } else if (this.props.bombed === false && this.props.flagged === false && this.props.explored === true){
+  //   this.setState({ tileDisplay = "E" });
+  // } else if (this.props.flagged === true) {
+  //   this.setState({ tileDisplay = "&#128681" });
+  // } else 
+
 
   _createClass(Tile, [{
-    key: "addTotalVote",
-    value: function addTotalVote() {
-      this.setState({
-        totalVotes: this.state.totalVotes + 1
-      });
-    }
-  }, {
-    key: "setTileDisplay",
-    value: function setTileDisplay(alt) {
-      if (alt) {
-        this.setState({
-          tileDisplay: 'F'
-        });
-      } else if (this.props.tile.bombed === true) {
-        this.setState({
-          tileDisplay: 'B'
-        });
-      }
-    } //"&#128163" 
-    // if(this.props.bombed === false && this.props.flagged === false && this.props.explored === false){
-    //   this.setState({ tileDisplay = "T" });
-    // } else if (this.props.bombed === false && this.props.flagged === false && this.props.explored === true){
-    //   this.setState({ tileDisplay = "E" });
-    // } else if (this.props.flagged === true) {
-    //   this.setState({ tileDisplay = "&#128681" });
-    // } else 
-
-  }, {
     key: "handleClick",
     value: function handleClick(e) {
       var alt = e.altKey;
-      this.setTileDisplay(alt); // alert('clicked')
-      //check to see if it is a bomb
-      // if it is a bomb then you lose
-      //else set explored to true and reveal adjacent bombs and return
-      // set tileDisplay to return of adjacent bombs
+      var tile = this.props.tile;
+      this.props.updateGame(tile, alt);
     }
   }, {
     key: "render",
     value: function render() {
+      var flagged = this.props.tile.flagged;
+      var explored = this.props.tile.explored;
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-        className: "tile",
+        className: "tile ".concat(flagged ? "flagged" : "", " ").concat(explored ? "explored" : ""),
         onClick: this.handleClick
       }, this.state.tileDisplay);
     }
