@@ -4,40 +4,20 @@ import Minesweeper from './react_minesweeper';
 class Tile extends React.Component {
     constructor(props) {
         super(props)
-        this.state = {
-          bombed: false,
-          flagged: false,
-          explored: false,
-          tileDisplay: ""
-        };
+
+        // debugger
+        // // 
+        // if (props.tile.explored === true && props.tile.adjacentBombCount() !== 0){
+        //   this.state = {tileDisplay: props.tile.adjacentBombCount()}
+        // } else {
+        //   this.state = {tileDisplay: ""}
+        // }
 
       this.handleClick = this.handleClick.bind(this)
       // this.setTitleDisplay = this.setTitleDisplay.bind(this)
         
     }
 
-
-    // setTitleDisplay(alt){
-
-      
-      
-    //   if (alt){
-    //     this.props.tile.flagged();
-    //   } else if (this.props.tile.bombed === true) {
-    //     this.props.tile.explore();
-    //   }
-      
-    // }
-
-    //"&#128163" 
-
-      // if(this.props.bombed === false && this.props.flagged === false && this.props.explored === false){
-      //   this.setState({ tileDisplay = "T" });
-      // } else if (this.props.bombed === false && this.props.flagged === false && this.props.explored === true){
-      //   this.setState({ tileDisplay = "E" });
-      // } else if (this.props.flagged === true) {
-      //   this.setState({ tileDisplay = "&#128681" });
-      // } else 
 
     handleClick(e){
 
@@ -54,9 +34,17 @@ class Tile extends React.Component {
  
       const flagged = this.props.tile.flagged
       const explored = this.props.tile.explored
+      const bombed = this.props.tile.bombed
+
+      let toDisplay;
+
+      if(explored && !bombed){
+        let count = this.props.tile.adjacentBombCount();
+        toDisplay = (count > 0 ? `${count} ` : "");
+      }
 
       return (
-          <div className={`tile ${flagged ? "flagged" : ""} ${explored ? "explored" : ""}`} onClick={this.handleClick}>{this.state.tileDisplay}</div>
+          <div className={`tile ${flagged ? "flagged" : ""} ${explored ? "explored" : ""} ${bombed && explored ? "bombed" : ""}`} onClick={this.handleClick}>{toDisplay}</div>
       )
     }
 }

@@ -12,12 +12,16 @@ class Game extends React.Component{
     this.updateGame = this.updateGame.bind(this)
   }
 
-  updateGame(){
+  updateGame(tile, alt){
 
-    debugger
+    // debugger
 
-    let sring = "string"
-    return sring
+    if(alt){
+      tile.toggleFlag()
+    } else {
+      tile.explore()
+    }
+    this.setState({ board: this.state.board })
 
   }
 

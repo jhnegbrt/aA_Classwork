@@ -140,10 +140,17 @@ var Game = /*#__PURE__*/function (_React$Component) {
 
   _createClass(Game, [{
     key: "updateGame",
-    value: function updateGame() {
-      debugger;
-      var sring = "string";
-      return sring;
+    value: function updateGame(tile, alt) {
+      // debugger
+      if (alt) {
+        tile.toggleFlag();
+      } else {
+        tile.explore();
+      }
+
+      this.setState({
+        board: this.state.board
+      });
     }
   }, {
     key: "render",
@@ -439,32 +446,18 @@ var Tile = /*#__PURE__*/function (_React$Component) {
 
     _classCallCheck(this, Tile);
 
-    _this = _super.call(this, props);
-    _this.state = {
-      bombed: false,
-      flagged: false,
-      explored: false,
-      tileDisplay: ""
-    };
+    _this = _super.call(this, props); // debugger
+    // // 
+    // if (props.tile.explored === true && props.tile.adjacentBombCount() !== 0){
+    //   this.state = {tileDisplay: props.tile.adjacentBombCount()}
+    // } else {
+    //   this.state = {tileDisplay: ""}
+    // }
+
     _this.handleClick = _this.handleClick.bind(_assertThisInitialized(_this)); // this.setTitleDisplay = this.setTitleDisplay.bind(this)
 
     return _this;
-  } // setTitleDisplay(alt){
-  //   if (alt){
-  //     this.props.tile.flagged();
-  //   } else if (this.props.tile.bombed === true) {
-  //     this.props.tile.explore();
-  //   }
-  // }
-  //"&#128163" 
-  // if(this.props.bombed === false && this.props.flagged === false && this.props.explored === false){
-  //   this.setState({ tileDisplay = "T" });
-  // } else if (this.props.bombed === false && this.props.flagged === false && this.props.explored === true){
-  //   this.setState({ tileDisplay = "E" });
-  // } else if (this.props.flagged === true) {
-  //   this.setState({ tileDisplay = "&#128681" });
-  // } else 
-
+  }
 
   _createClass(Tile, [{
     key: "handleClick",
@@ -478,10 +471,18 @@ var Tile = /*#__PURE__*/function (_React$Component) {
     value: function render() {
       var flagged = this.props.tile.flagged;
       var explored = this.props.tile.explored;
+      var bombed = this.props.tile.bombed;
+      var toDisplay;
+
+      if (explored && !bombed) {
+        var count = this.props.tile.adjacentBombCount();
+        toDisplay = count > 0 ? "".concat(count, " ") : "";
+      }
+
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-        className: "tile ".concat(flagged ? "flagged" : "", " ").concat(explored ? "explored" : ""),
+        className: "tile ".concat(flagged ? "flagged" : "", " ").concat(explored ? "explored" : "", " ").concat(bombed && explored ? "bombed" : ""),
         onClick: this.handleClick
-      }, this.state.tileDisplay);
+      }, toDisplay);
     }
   }]);
 

@@ -18,3 +18,11 @@
 .explored{
     border-style: inset;
 }
+
+.flagged:after{
+    content: '\1F6A9';
+}
+
+.bombed:after{
+    content: '\1F4A3';
+}
