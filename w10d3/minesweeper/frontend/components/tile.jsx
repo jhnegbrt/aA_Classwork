@@ -39,8 +39,10 @@ class Tile extends React.Component {
       let toDisplay;
 
       if(explored && !bombed){
+
         let count = this.props.tile.adjacentBombCount();
         toDisplay = (count > 0 ? `${count} ` : "");
+ 
       }
 
       return (
