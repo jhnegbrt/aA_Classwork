@@ -1,5 +1,16 @@
 .tile {
     background-color: lightgray;
     border: .5px solid black;
-    width: 5px;
+    width: 20px;
+    height: 20px;
+    margin: 0px;
+    padding: 0px;
+}
+
+.row{
+    
+    display: flex;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    
 }

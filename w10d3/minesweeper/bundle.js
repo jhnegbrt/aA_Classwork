@@ -66,6 +66,7 @@ var Board = /*#__PURE__*/function (_React$Component) {
           });
         });
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+          className: "row",
           key: idx
         }, tiles);
       });
@@ -439,7 +440,7 @@ var Tile = /*#__PURE__*/function (_React$Component) {
       bombed: false,
       flagged: false,
       explored: false,
-      tileDisplay: "T"
+      tileDisplay: ""
     };
     _this.handleClick = _this.handleClick.bind(_assertThisInitialized(_this));
     return _this;
@@ -486,7 +487,7 @@ var Tile = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", {
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "tile",
         onClick: this.handleClick
       }, this.state.tileDisplay);
