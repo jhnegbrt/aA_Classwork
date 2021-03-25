@@ -30622,6 +30622,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var _actions_todo_actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actions/todo_actions */ "./frontend/actions/todo_actions.js");
+function _readOnlyError(name) { throw new TypeError("\"" + name + "\" is read-only"); }
+
+
+
 
 
 var initialState = {
@@ -30647,6 +30651,16 @@ var todosReducer = function todosReducer() {
 
   switch (action.type) {
     case _actions_todo_actions__WEBPACK_IMPORTED_MODULE_0__.RECEIVE_TODOS:
+      nextState = (_readOnlyError("nextState"), {});
+      action.todos.foreach(function (object) {
+        nextState[object.id] = object;
+      });
+      return nextState;
+
+    case _actions_todo_actions__WEBPACK_IMPORTED_MODULE_0__.RECEIVE_TODO:
+      nextState[action.todo.id] = action.todo;
+      return nextState;
+
     default:
       return state;
   }
@@ -30775,11 +30789,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./frontend/node_modules/react/index.js");
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./frontend/node_modules/react-dom/index.js");
 /* harmony import */ var _store_store__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./store/store */ "./frontend/store/store.js");
+/* harmony import */ var _actions_todo_actions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./actions/todo_actions */ "./frontend/actions/todo_actions.js");
+
 
 
 
 var store = (0,_store_store__WEBPACK_IMPORTED_MODULE_2__.default)();
 window.store = store;
+window.receiveTodo = _actions_todo_actions__WEBPACK_IMPORTED_MODULE_3__.receiveTodo;
 document.addEventListener("DOMContentLoaded", function () {
   var root = document.getElementById('root');
   react_dom__WEBPACK_IMPORTED_MODULE_1__.render( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, "React is working"), root);

@@ -1,5 +1,8 @@
 import { RECEIVE_TODOS } from "../actions/todo_actions"
 import { RECEIVE_TODO } from "../actions/todo_actions"
+import {receiveTodos} from "../actions/todo_actions"
+import {receiveTodo} from "../actions/todo_actions"
+
 
 
 const initialState = {
@@ -24,7 +27,15 @@ const todosReducer = (state = initialState, action) =>{
   switch (action.type){
 
     case RECEIVE_TODOS:
+      nextState = {};
+      action.todos.foreach(object =>{
+        nextState[object.id] = object;
+      });
+      return nextState;
       
+    case RECEIVE_TODO:
+      nextState[action.todo.id] = action.todo;
+      return nextState;
 
     default:
       return state;
