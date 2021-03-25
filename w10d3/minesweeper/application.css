@@ -1,0 +1,5 @@
+.tile {
+    background-color: lightgray;
+    border: .5px solid black;
+    width: 5px;
+}

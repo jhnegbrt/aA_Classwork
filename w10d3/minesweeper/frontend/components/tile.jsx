@@ -8,7 +8,7 @@ class Tile extends React.Component {
           bombed: false,
           flagged: false,
           explored: false,
-          tileDisplay: "~T"
+          tileDisplay: "T"
         };
 
       this.handleClick = this.handleClick.bind(this)
@@ -53,7 +53,7 @@ class Tile extends React.Component {
     render() {        
 
       return (
-          <div onClick={this.handleClick}>{this.state.tileDisplay}</div>
+          <span className="tile" onClick={this.handleClick}>{this.state.tileDisplay}</span>
       )
     }
 }
