@@ -10,7 +10,7 @@ const TodoList = (props) =>{
     <div>
         <ul>
             {props.todos.map((todo, idx)=>
-                <TodoListItem todo={todo}/>
+                <TodoListItem todo={todo} receiveTodo = {props.receiveTodo} removeTodo = {props.removeTodo}/>
                 // <li key={idx}>Title: {todo.title}, Body: {todo.body}</li>
             )}
         </ul>

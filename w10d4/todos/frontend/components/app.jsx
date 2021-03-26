@@ -12,8 +12,6 @@ class App extends React.Component{
         <h1>React App</h1>
         <TodoListContainer />
       </div>
-
-      
     )
   }
 }
