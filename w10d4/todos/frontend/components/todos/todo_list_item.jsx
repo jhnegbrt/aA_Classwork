@@ -11,6 +11,7 @@ class TodoListItem extends React.Component{
     this.handleDone = this.handleDone.bind(this)
     this.state = {
       done: this.props.todo.done,
+      detail: false
     }
   }
 
@@ -30,14 +31,22 @@ class TodoListItem extends React.Component{
     this.props.receiveTodo(this.state)
 
   }
+
+  handleDetail(e){
+    this.setState({
+      detail: !this.state.detail
+    })
+    // this.props.receiveTodo(this.state)
+  }
   
   render(){
 
     return(
       <li>
-        {this.props.todo.title} 
-        <button onClick={this.handleRemove}>Remove</button>
+        <span onClick={this.handleDetail}>{this.props.todo.title}</span>
+        {/* <button onClick={this.handleRemove}>Remove</button> */}
         <button onClick={this.handleDone}>{this.state.done ? 'Undo' : 'Done'}</button>
+        {this.state.detail? <TodoDetailViewContainer todo={this.props.todo} /> : ""}
       </li>
     )
   }
