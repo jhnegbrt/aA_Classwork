@@ -3,8 +3,6 @@ import { RECEIVE_TODOS, RECEIVE_TODO, REMOVE_TODO } from "../actions/todo_action
 // import {receiveTodos, receiveTodo, removeTodo} from "../actions/todo_actions"
 
 
-
-
 const initialState = {
   1: {
     id: 1,

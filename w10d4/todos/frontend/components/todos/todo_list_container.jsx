@@ -1,5 +1,4 @@
 import {connect} from 'react-redux'
-
 import TodoList from './todo_list.jsx'
 
 
@@ -14,4 +13,4 @@ const mapDispatchToProps = (dispatch) => ({
 export default connect(
     mapStateToProps,
     mapDispatchToProps
-  )(TodoList);
+)(TodoList);

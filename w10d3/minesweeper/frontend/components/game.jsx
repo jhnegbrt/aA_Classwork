@@ -6,7 +6,7 @@ class Game extends React.Component{
   constructor(props){
     super(props)
     this.state = {
-      board: new Minesweeper.Board(10, 4)
+      board: new Minesweeper.Board(20, 40)
     }
 
     this.updateGame = this.updateGame.bind(this)
