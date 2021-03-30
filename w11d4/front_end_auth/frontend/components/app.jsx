@@ -10,7 +10,7 @@ export default () => (
   <div>
     <Route path="/" component={NavBarContainer} />
     <Route exact path="/" component={Home} />
-    <ProtectedRoute path="/chirps" component={ChirpIndexContainer} />
     <AuthRoute path="/signup" component={SignupContainer} />
+    <ProtectedRoute path="/chirps" component={ChirpIndexContainer} />
   </div>
 );

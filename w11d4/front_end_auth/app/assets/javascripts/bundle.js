@@ -174,7 +174,7 @@ var receieveCurrentUser = function receieveCurrentUser(user) {
 };
 
 var logoutCurrentUser = function logoutCurrentUser() {
-  debugger;
+
   return {
     type: LOGOUT_CURRENT_USER
   };
@@ -198,7 +198,7 @@ var login = exports.login = function login(formUser) {
 var logout = exports.logout = function logout() {
   return function (dispatch) {
     return (0, _session.deleteSession)().then(function () {
-      return dispatch(logoutCurrentUser);
+      return dispatch(logoutCurrentUser());
     });
   };
 };
@@ -301,8 +301,8 @@ exports.default = function () {
     null,
     _react2.default.createElement(_reactRouterDom.Route, { path: '/', component: _nav_bar_container2.default }),
     _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/', component: _home2.default }),
-    _react2.default.createElement(_route_util.ProtectedRoute, { path: '/chirps', component: _chirp_index_container2.default }),
-    _react2.default.createElement(_route_util.AuthRoute, { path: '/signup', component: _signup_container2.default })
+    _react2.default.createElement(_route_util.AuthRoute, { path: '/signup', component: _signup_container2.default }),
+    _react2.default.createElement(_route_util.ProtectedRoute, { path: '/chirps', component: _chirp_index_container2.default })
   );
 };
 
@@ -568,7 +568,6 @@ exports.default = function (_ref) {
   var currentUser = _ref.currentUser,
       logout = _ref.logout;
 
-  debugger;
   var display = currentUser ? _react2.default.createElement(
     'div',
     null,
@@ -1099,7 +1098,6 @@ exports.default = function () {
   var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : _nullSession;
   var action = arguments[1];
 
-  debugger;
   Object.freeze(state);
   switch (action.type) {
     case _session.RECEIVE_CURRENT_USER:
@@ -1251,9 +1249,9 @@ var mapStateToProps = function mapStateToProps(state) {
 };
 
 var Auth = function Auth(_ref) {
-  var loggedIn = _ref.loggedIn,
+  var Component = _ref.component,
       path = _ref.path,
-      Component = _ref.component;
+      loggedIn = _ref.loggedIn;
   return _react2.default.createElement(_reactRouterDom.Route, {
     path: path,
     render: function render(props) {
@@ -1263,9 +1261,9 @@ var Auth = function Auth(_ref) {
 };
 
 var Protected = function Protected(_ref2) {
-  var loggedIn = _ref2.loggedIn,
+  var Component = _ref2.component,
       path = _ref2.path,
-      Component = _ref2.component;
+      loggedIn = _ref2.loggedIn;
   return _react2.default.createElement(_reactRouterDom.Route, {
     path: path,
     render: function render(props) {
@@ -1275,7 +1273,7 @@ var Protected = function Protected(_ref2) {
 };
 
 var AuthRoute = exports.AuthRoute = (0, _reactRouterDom.withRouter)((0, _reactRedux.connect)(mapStateToProps)(Auth));
-var ProtectedRoute = exports.ProtectedRoute = (0, _reactRouterDom.withRouter)((0, _reactRedux.connect)(mapStateToProps)(Protected));
+var ProtectedRoute = exports.ProtectedRoute = (0, _reactRouterDom.withRouter)((0, _reactRedux.connect)(mapStateToProps, undefined)(Protected));
 
 /***/ }),
 
@@ -1309,7 +1307,6 @@ var postSession = exports.postSession = function postSession(user) {
 };
 
 var deleteSession = exports.deleteSession = function deleteSession() {
-  debugger;
   return $.ajax({
     url: '/api/session',
     method: 'DELETE'
