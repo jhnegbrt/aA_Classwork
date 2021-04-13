@@ -167,9 +167,11 @@ var logout = function logout() {
   return function (dispatch) {
     return _util_session_api_util__WEBPACK_IMPORTED_MODULE_0__.logout().then(function () {
       return dispatch(logoutCurrentUser());
-    });
+    }).fail(function (errors) {
+      return dispatch(receiveErrors(errors.responseJSON));
+    })();
   };
-}; // .fail(errors => dispatch(receiveErrors(errors.responseJSON)))
+};
 
 /***/ }),
 
@@ -793,7 +795,7 @@ var login = function login(user) {
     }
   });
 };
-var logout = function logout(user) {
+var logout = function logout() {
   return $.ajax({
     method: 'DELETE',
     url: '/api/session'
