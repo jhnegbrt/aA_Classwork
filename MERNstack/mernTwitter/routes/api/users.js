@@ -75,10 +75,10 @@ router.post('/login', (req, res) => {
   const email = req.body.email
 
 
-  User.findOne({handle})
+  User.findOne({email})
     .then(user => {
       if (!user) {
-        errors.handle = "User not found"
+        errors.email = "User not found"
         return res.status(400).json(errors);
       }
 
