@@ -230,6 +230,22 @@ function pathFinder(directories, targetFile) {
 
 }
 
+function pathFinder(directories, targetFile) {
+
+    let path = '';
+    for (var key in directories){
+        if (key === targetFile){
+            return "/".concat(targetFile)
+        }
+        path = pathFinder(directories[key], targetFile)
+        if (path !== null) {
+            return key + path
+        }
+    }
+    return null
+
+}
+
 
 module.exports = {
     lucasNumber,
